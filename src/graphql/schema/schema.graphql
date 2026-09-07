@@ -1,0 +1,22 @@
+scalar Time
+
+type Query {
+  products: [Product!]!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  priceInCents: Int!
+  slug: String!
+  shortName: String!
+  categoryId: Int!
+  isNew: Boolean!
+  description: String!
+  features: String!
+  boxIncludes: String!
+  gallery: String!
+  categoryImage: String!
+  recommendedProductIds: [Int!]!
+  createdAt: Time!
+}
