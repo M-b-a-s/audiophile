@@ -13,7 +13,10 @@ export function Products() {
       {data?.products.map((product) => (
         <div key={product.id}>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
+          <p>Short Name: {product.shortName}</p>
+          <p>Description: {product.description}</p>
+          <p>Features: {product.features}</p>
+          <p>Box Includes: {product.boxIncludes}</p>
         </div>
       ))}
     </div>
