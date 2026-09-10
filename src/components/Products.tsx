@@ -16,7 +16,7 @@ export function Products() {
           <p>Short Name: {product.shortName}</p>
           <p>Description: {product.description}</p>
           <p>Features: {product.features}</p>
-          <p>Box Includes: {product.boxIncludes}</p>
+          {/* <p>Box Includes: {product.boxIncludes}</p> */}
         </div>
       ))}
     </div>

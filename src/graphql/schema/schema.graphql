@@ -14,7 +14,7 @@ type Product {
   isNew: Boolean!
   description: String!
   features: String!
-  boxIncludes: String!
+  boxIncludes: [String!]!
   gallery: String!
   categoryImage: String!
   recommendedProductIds: [Int!]!
