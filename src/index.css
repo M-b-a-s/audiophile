@@ -1,111 +1,282 @@
+/* ==========================================================================
+   Audiophile — Design System
+   Source: Figma "Design System" page (sections 01 Colors, 02 Typography,
+   03 Buttons, 04 Form Elements)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* ---- Color ------------------------------------------------------------ */
+  --color-primary:            #D87D4A; /* brand orange — primary actions */
+  --color-primary-hover:      #FBAF85; /* orange, button hover state */
+  --color-black:              #101010; /* near-black — nav/footer bg, headings */
+  --color-true-black:         #000000; /* pure black — outline button hover fill */
+  --color-white:              #FFFFFF;
+  --color-gray-100:           #FAFAFA; /* page background */
+  --color-gray-200:           #F1F1F1; /* section/card background */
+  --color-gray-border:        rgba(76, 76, 76, 0.2); /* default input border */
+  --color-gray-border-solid:  #CFCFCF; /* default input border (solid variant) */
+  --color-error:               #CD2C2C; /* validation error */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* ---- Typography --------------------------------------------------------
+     Family: Manrope. Weights used: 500 (Medium, body/labels), 700 (Bold, headings/buttons)
+  */
+  --font-family-base: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --h1-size: 56px; --h1-line: 58px; --h1-tracking: 2px;      /* Bold, uppercase */
+  --h2-size: 40px; --h2-line: 44px; --h2-tracking: 1.5px;    /* Bold, uppercase */
+  --h3-size: 32px; --h3-line: 36px; --h3-tracking: 1.15px;   /* Bold, uppercase */
+  --h4-size: 28px; --h4-line: 38px; --h4-tracking: 2px;      /* Bold, uppercase */
+  --h5-size: 24px; --h5-line: 33px; --h5-tracking: 1.7px;    /* Bold, uppercase */
+  --h6-size: 18px; --h6-line: 24px; --h6-tracking: 1.3px;    /* Bold, uppercase */
+  --subtitle-size: 13px; --subtitle-line: 25px; --subtitle-tracking: 1px; /* Bold, uppercase, orange */
+  --body-size: 15px; --body-line: 25px;                       /* Medium */
+  --overline-size: 14px; --overline-line: 19px; --overline-tracking: 10px; /* Regular, uppercase, orange */
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* ---- Spacing / radius --------------------------------------------------- */
+  --radius-sm: 8px;
+  --container-max: 1110px;      /* desktop content width (1440 canvas, 165px margins) */
+  --container-padding-mobile: 24px;
+  --container-padding-tablet: 40px;
+  --container-padding-desktop: 165px;
+
+  /* ---- Breakpoints (reference only — use in media queries directly) ------- */
+  --bp-tablet: 768px;
+  --bp-desktop: 1440px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
+  font-family: var(--font-family-base);
   font-weight: 500;
-  color: var(--text-h);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--color-black);
+  background: var(--color-gray-100);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-mobile);
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+@media (min-width: 768px) {
+  .container { padding-inline: var(--container-padding-tablet); }
 }
-p {
+@media (min-width: 1440px) {
+  .container { padding-inline: 0; width: var(--container-max); }
+}
+
+/* ==========================================================================
+   Typography utility classes
+   ========================================================================== */
+
+.h1, .h2, .h3, .h4, .h5, .h6, .subtitle, .overline {
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.h1 { font-size: var(--h1-size); line-height: var(--h1-line); letter-spacing: var(--h1-tracking); }
+.h2 { font-size: var(--h2-size); line-height: var(--h2-line); letter-spacing: var(--h2-tracking); }
+.h3 { font-size: var(--h3-size); line-height: var(--h3-line); letter-spacing: var(--h3-tracking); }
+.h4 { font-size: var(--h4-size); line-height: var(--h4-line); letter-spacing: var(--h4-tracking); }
+.h5 { font-size: var(--h5-size); line-height: var(--h5-line); letter-spacing: var(--h5-tracking); }
+.h6 { font-size: var(--h6-size); line-height: var(--h6-line); letter-spacing: var(--h6-tracking); }
+
+.subtitle {
+  font-size: var(--subtitle-size);
+  line-height: var(--subtitle-line);
+  letter-spacing: var(--subtitle-tracking);
+  color: var(--color-primary);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.overline {
+  font-weight: 400;
+  font-size: var(--overline-size);
+  line-height: var(--overline-line);
+  letter-spacing: var(--overline-tracking);
+  color: var(--color-primary);
 }
+
+.body-text { font-weight: 500; font-size: var(--body-size); line-height: var(--body-line); }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 0; /* buttons in this system are square-cornered */
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.btn--primary:hover { background: var(--color-primary-hover); }
+
+.btn--outline {
+  background: transparent;
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+.btn--outline:hover {
+  background: var(--color-true-black);
+  border-color: var(--color-true-black);
+  color: var(--color-white);
+}
+
+.btn--block { width: 100%; }
+
+/* ==========================================================================
+   Form elements
+   ========================================================================== */
+
+.field { margin-bottom: 24px; }
+
+.field__label {
+  display: block;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+
+.field__input {
+  width: 100%;
+  padding: 15px 24px;
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.25px;
+  color: var(--color-black);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-border-solid);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field__input::placeholder { color: var(--color-black); opacity: 0.4; }
+
+.field__input:focus {
+  border-color: var(--color-primary);
+}
+
+.field--error .field__label { color: var(--color-error); }
+.field--error .field__input {
+  border: 2px solid var(--color-error);
+}
+.field__error-msg {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.2px;
+  color: var(--color-error);
+  float: right;
+}
+
+/* Radio selection (e.g. payment method) */
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px;
+  border: 1px solid var(--color-gray-border-solid);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.radio--active { border-color: var(--color-primary); }
+
+.radio__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-border-solid);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.radio--active .radio__dot { border-color: var(--color-primary); }
+.radio--active .radio__dot::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.radio__label { font-weight: 700; font-size: 14px; letter-spacing: -0.25px; }
+
+/* ==========================================================================
+   Auth screens (Login / Signup) — shared split-panel layout
+   ========================================================================== */
+
+.auth-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .auth-screen { grid-template-columns: 5fr 7fr; }
+}
+
+.auth-screen__brand {
+  background: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 40px;
+  min-height: 280px;
+}
+@media (min-width: 900px) {
+  .auth-screen__brand { padding: 64px; }
+}
+
+.auth-screen__brand .wordmark {
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.auth-screen__brand-copy { max-width: 380px; }
+.auth-screen__brand-copy .h3 { color: var(--color-white); margin-bottom: 16px; }
+.auth-screen__brand-lede { opacity: 0.6; }
+
+.auth-screen__form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 64px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+}
+.auth-card__lede { opacity: 0.6; margin-bottom: 32px; }
+.auth-card__switch { margin-top: 24px; font-size: 14px; text-align: center; }
+.auth-card__switch a { color: var(--color-primary); font-weight: 700; text-decoration: underline; }
+
+.field__label-row { display: flex; justify-content: space-between; }

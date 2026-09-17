@@ -5,6 +5,8 @@ import { ApolloProvider } from "@apollo/client/react";
 import App from "./App";
 import { apolloClient } from "./lib/apollo";
 
+import "./index.css"
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
