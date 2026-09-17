@@ -1,12 +1,7 @@
-import { Products } from "./components/Products"
+import HomePage from "./pages/HomePage"
 
 const App = () => {
-  return (
-    <div>
-      <h1>Audiophile</h1>
-      <Products />
-    </div>
-  )
+  return <HomePage />
 }
 
 export default App
