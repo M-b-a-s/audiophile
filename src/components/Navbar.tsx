@@ -2,7 +2,7 @@ import { Menu, ShoppingCart } from "lucide-react"
 
 const Navbar = () => {
   return (
-    <header className="relative z-10 border-b border-white/10">
+    <header className="relative bg-black z-10 border-b border-white/10">
         <div className="mx-auto flex h-20 max-w-277.5 items-center justify-between px-6 md:px-10 xl:px-0">
           <button
             type="button"

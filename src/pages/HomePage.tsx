@@ -1,9 +1,10 @@
 
 import Navbar from "../components/Navbar"
+import ProductCategories from "@/components/ProductCategories"
 
 const HomePage = () => {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen text-white">
       <Navbar />
 
       <section className="relative isolate flex min-h-[calc(100vh-80px)] items-center justify-center overflow-hidden bg-black px-6  text-center">
@@ -33,6 +34,7 @@ const HomePage = () => {
           </a>
         </div>
       </section>
+      <ProductCategories />
     </main>
   )
 }
